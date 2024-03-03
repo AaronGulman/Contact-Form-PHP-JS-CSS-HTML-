@@ -122,6 +122,7 @@ form .button-area{
 .button-area span{
 	color: #d40cde;
 	margin-left: 30px;
+	display: none;
 }
 
 @media(max-width: 600px){

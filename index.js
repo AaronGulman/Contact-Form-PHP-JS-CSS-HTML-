@@ -1,3 +1,4 @@
+//DOM
 const wrapperDiv = document.createElement("div");
 wrapperDiv.classList.add("wrapper");
 
@@ -96,3 +97,20 @@ sendingSpan.textContent = "Sending your message...";
 buttonAreaDiv.appendChild(sendingSpan);
 
 document.body.appendChild(wrapperDiv);
+
+// ---------------------------------------------------------------------
+
+statusTxt = form.querySelector(".button-area span")
+
+form.onsubmit = (e)=>{
+	e.preventDefault();
+	statusTxt.style.display ="block"
+}
+
+let xhr = new HMLHttpsRequest();
+xhr.open("POST","message.php", true);
+xhr.onload = ()=>{
+
+}
+
+xhr.send();
