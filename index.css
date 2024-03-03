@@ -51,14 +51,109 @@ form .msg textarea{
 	height: 100%;
 	width: 100%;
 	outline: none;
-	padding: 0 18px;
+	padding: 0 18px 0 48px;
 	font-size: 18px;
 	border-radius: 5px;
 	border: 1px solid #bfbfbf;
 }
 
-.wrapper .field i {
+form .field input::placeholder,
+form .msg textarea::placeholder{
+	color: #bfbfbf;
+}
+
+form .field input:focus,
+form .msg textarea:focus{
+ border: 2px solid #d40cde;
+}
+
+
+.wrapper form i {
 	position: absolute;
 	left: 18px;
+	top: 50%;
+	color: #bfbfbf;
+	transform: translateY(-50%);
+	font-size: 17px;
+	pointer-events: none;
 
+}
+
+form .field input:focus ~ i{
+	color: #d40cde;
+}
+
+
+form .msg{
+	position: relative;
+
+}
+
+form .msg i{
+	top: 20px;
+	font-size: 20px;
+}
+
+form .msg textarea{
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 120px;
+	max-height: 300px;
+	padding: 15px 20 0 48px;
+}
+
+form .button-area{
+	margin: 25px 0;
+	display: flex;
+	align-items: center;
+}
+
+.button-area button{
+	padding: 13px 25px;
+	font-size: 18px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	background: #d40cde;
+	color: #fff;
+}
+
+
+.button-area span{
+	color: #d40cde;
+	margin-left: 30px;
+}
+
+@media(max-width: 600px){
+	.wrapper header{
+		text-align: center;
+	}
+
+	form .dbl-field{
+		margin-bottom: 0px;
+		flex-direction: column;
+	}
+
+	.dbl-field .field{
+		width:100%;
+		margin-bottom: 20px;
+	}
+
+	form .msg textarea{
+		resize: none;
+	}
+
+
+	.button-area button{
+		width: 100%;
+	}
+
+	form .button-area{
+		flex-direction: column;
+	}
+
+	.button-area span{
+		text-align: center;
+		margin: 20px 0;
+	}
 }
