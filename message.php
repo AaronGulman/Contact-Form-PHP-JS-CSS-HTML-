@@ -11,7 +11,7 @@
 	}elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
 		echo "Enter a valid email address!";
 	}else{
-			$receiver = "gurban.gulamov@gmail.com";
+			$receiver = "my@email.com";
 			$subject = "From: $name <$email>";
 			$body = "Name: $name\n Email: $email\n Phone: $phone\n Website: $website\n Message: $message";
 			$sender = "From: $email";
