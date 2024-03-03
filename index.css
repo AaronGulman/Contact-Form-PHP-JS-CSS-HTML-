@@ -12,20 +12,21 @@ body{
 	justify-content: center;
 	min-height: 100vh;
 	padding: 0 10px;
-	background: #d40cde;
+	background: #380882;
 }
 
 .wrapper{
 	width: 720px;
-	background: #fff;
+	background: #006eff9b;
 	border-radius: 5px;
+	animation: fadeIn 1s;
 }
 
 .wrapper header{
 	font-size: 22px;
 	font-weight: 600;
 	padding: 20px 30px;
-	border-bottom: 1px solid #bfbfbf;
+	border-bottom: 1px solid #000000;
 }
 
 .wrapper form{
@@ -64,7 +65,7 @@ form .msg textarea::placeholder{
 
 form .field input:focus,
 form .msg textarea:focus{
- border: 2px solid #d40cde;
+ border: 2px solid #611b65;
 }
 
 
@@ -80,7 +81,7 @@ form .msg textarea:focus{
 }
 
 form .field input:focus ~ i{
-	color: #d40cde;
+	color: #611b65;
 }
 
 
@@ -90,11 +91,12 @@ form .msg{
 }
 
 form .msg i{
-	top: 20px;
+	top: 13px;
 	font-size: 20px;
 }
 
 form .msg textarea{
+	display:flex;
 	min-width: 100%;
 	max-width: 100%;
 	min-height: 120px;
@@ -114,7 +116,7 @@ form .button-area{
 	border: none;
 	cursor: pointer;
 	border-radius: 5px;
-	background: #d40cde;
+	background: #4e0552;
 	color: #fff;
 }
 
@@ -156,5 +158,17 @@ form .button-area{
 	.button-area span{
 		text-align: center;
 		margin: 20px 0;
+	}
+}
+
+
+@keyframes fadeIn{
+	0%{
+		transform: translateY(-150%);
+		opacity: 0;
+	}
+	100%{
+		transform: translateY(0%);
+		opacity: 1;
 	}
 }

@@ -21,6 +21,7 @@ dblFieldDiv1.appendChild(fieldDiv1);
 const nameInput = document.createElement("input");
 nameInput.setAttribute("type", "text");
 nameInput.setAttribute("placeholder", "Enter your name");
+nameInput.setAttribute("name","name")
 fieldDiv1.appendChild(nameInput);
 
 const userIcon1 = document.createElement("i");
@@ -33,6 +34,7 @@ dblFieldDiv1.appendChild(fieldDiv2);
 
 const emailInput = document.createElement("input");
 emailInput.setAttribute("type", "email");
+emailInput.setAttribute("name","email")
 emailInput.setAttribute("placeholder", "Enter your email");
 fieldDiv2.appendChild(emailInput);
 
@@ -50,6 +52,7 @@ dblFieldDiv2.appendChild(fieldDiv3);
 
 const phoneInput = document.createElement("input");
 phoneInput.setAttribute("type", "text");
+phoneInput.setAttribute("name","phone")
 phoneInput.setAttribute("placeholder", "Enter your phone number");
 fieldDiv3.appendChild(phoneInput);
 
@@ -63,11 +66,12 @@ dblFieldDiv2.appendChild(fieldDiv4);
 
 const websiteInput = document.createElement("input");
 websiteInput.setAttribute("type", "text");
+websiteInput.setAttribute("name","website")
 websiteInput.setAttribute("placeholder", "Enter your website");
 fieldDiv4.appendChild(websiteInput);
 
 const globalIcon = document.createElement("i");
-globalIcon.classList.add("fas", "fa-global");
+globalIcon.classList.add("fas", "fa-globe");
 fieldDiv4.appendChild(globalIcon);
 
 const msgDiv = document.createElement("div");
@@ -75,6 +79,7 @@ msgDiv.classList.add("msg");
 form.appendChild(msgDiv);
 
 const messageTextarea = document.createElement("textarea");
+messageTextarea.setAttribute("name","message")
 messageTextarea.setAttribute("placeholder", "Write your message");
 msgDiv.appendChild(messageTextarea);
 
@@ -105,12 +110,27 @@ statusTxt = form.querySelector(".button-area span")
 form.onsubmit = (e)=>{
 	e.preventDefault();
 	statusTxt.style.display ="block"
-}
+	statusTxt.style.color ="#d40cde"
+	statusTxt.style.display = "block"
 
-let xhr = new HMLHttpsRequest();
+
+let xhr = new XMLHttpRequest();
 xhr.open("POST","message.php", true);
 xhr.onload = ()=>{
-
+	if(xhr.readyState == 4 && xhr.status == 200){
+		let response = xhr.response;
+		if(response.includes("Email and password fields are required!") || 
+		response.includes("Enter a valid email address!")){
+			statusTxt.style.color = "red";
+		}else{
+			form.reset();
+			setTimeout(()=>{
+				statusTxt.style.display = "none"
+			},3000)
+		}
+		statusTxt.innerText = response;
+	}
 }
-
-xhr.send();
+let formData = new FormData(form);
+xhr.send(formData);
+}
